@@ -4,14 +4,14 @@ This repository contains the [Torch](http://torch.ch/) implementation of [FastTe
 ### Performance Comparison - Test accuracy (%) on sentiment datasets
 | Code \ Dataset | AG | Sogou | DBP | Yelp P. | Yelp F. | Yah. A. | Amz. F. | Amz. P. |
 |---|---|---|---|---|---|---|---|---|
-|[Original](https://github.com/facebookresearch/fastText)|92.5|96.8|98.6|95.7|63.9|72.3|60.2|94.6|
-|This|92.5|96.8|98.6|95.7|63.9|72.3|60.2|94.6|
+|[Original repo.](https://github.com/facebookresearch/fastText)|92.5|96.8|98.6|95.7|63.9|72.3|60.2|94.6|
+|This repo.|92.5|96.8|98.6|95.7|63.9|72.3|60.2|94.6|
 
 ### Components
 This repository contains the following components:
-* `train.lua' - This is a self-contained code to train the FastText model from scratch. Additionally, it has an option to use pre-trained word embeddings, that are specified in [Glove](http://nlp.stanford.edu/projects/glove/) format.
-* `test.lua' - This script test the trained model with a test dataset.
-* `runall.sh` - This script outputs the last column of the Table 1 from the original paper, which is the test accuracy [%] on 8 sentiment datasets.
+* `train.lua` - This is a self-contained code to train the FastText model from scratch. Additionally, it has an option to use pre-trained word embeddings, that are specified in [Glove's pre-trained embeddings](http://nlp.stanford.edu/projects/glove/) format.
+* `test.lua` - This script helps in testing the trained model with a test dataset.
+* `runall.sh` - This script outputs the last column of the Table 1 from the original paper, which is the test accuracy (%) on 8 sentiment datasets.
 
 ### Quick Start
 Download all the 8 datasets from [Drive](http://goo.gl/JyCnZq) and rename the master directory containing all the tars to 'data'.
@@ -23,7 +23,7 @@ bash runall.sh
 
 ### Options
 
-#### `train.lua`
+#### `th train.lua`
 * `input`: training file path [data/agnews.train]
 * `output`: output file path [agnews.t7]
 * `lr`: learning rate [0.05]
@@ -36,7 +36,7 @@ bash runall.sh
 * `preTrain`: initialize word embeddings with pre-trained vectors? [0]
 * `preTrainFile`: file containing the pre-trained word embeddings (should be in http://nlp.stanford.edu/projects/glove/ format). this is valid iff preTrain=1.
 
-#### `test.lua`
+#### `th test.lua`
 * `model`: trained model file path [agnews.t7]
 * `test`: testing file path [data/agnews.test]
 * `gpu`: whether to use gpu (1 = use gpu, 0 = not). use the same option used to train the model.
@@ -46,7 +46,7 @@ bash runall.sh
 * Hashing: The logic for hashtrick is not yet implemented.
 
 ### Acknowledgements
-Many thanks to the contributors of the [FastText](https://github.com/facebookresearch/fastText) for making their code publicly available as it helped to replicate their setup with ease.
+Many thanks to the contributors of the [FastText project](https://github.com/facebookresearch/fastText) for making their code publicly available as it helped to replicate their setup with ease.
 
 ### Author
 [Ganesh J](https://researchweb.iiit.ac.in/~ganesh.j/)
