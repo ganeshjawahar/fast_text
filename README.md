@@ -1,4 +1,7 @@
 ## Bag of Tricks for Efficient Text Classification
+
+[![Join the chat at https://gitter.im/fast_text/](https://badges.gitter.im/abhshkdz/neural-vqa.svg)](https://gitter.im/fast_text/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
+
 This repository contains the [Torch](http://torch.ch/) implementation of [FastText model](https://arxiv.org/abs/1607.01759). The original C code from Facebook can be found [here](https://github.com/facebookresearch/fastText).
 
 ### Performance Comparison - Test accuracy (%) on sentiment datasets
@@ -11,7 +14,7 @@ This repository contains the [Torch](http://torch.ch/) implementation of [FastTe
 This repository contains the following components:
 * `train.lua` - This is a self-contained code to train the FastText model from scratch. Additionally, it has an option to use pre-trained word embeddings, that are specified in [Glove's pre-trained embeddings](http://nlp.stanford.edu/projects/glove/) format.
 * `test.lua` - This script helps in testing the trained model with a test dataset.
-* `runall.sh` - This script outputs the last column of the Table 1 from the original paper, which is the test accuracy (%) on 8 sentiment datasets.
+* `runall.sh` - This script outputs the last column of the Table 1 from the original paper, which is the test accuracy (%) resulting from running FastTex on 8 sentiment datasets.
 
 ### Quick Start
 Download all the 8 datasets from [Drive](http://goo.gl/JyCnZq) and rename the master directory containing all the tars to 'data'.
@@ -19,6 +22,18 @@ Download all the 8 datasets from [Drive](http://goo.gl/JyCnZq) and rename the ma
 To get the performance scores reported in the last column of the Table 1 from the original paper, execute:
 ```
 bash runall.sh
+```
+
+### Dependencies
+* [Torch](http://torch.ch/)
+* xlua
+* tds
+* cutorch
+* cunn
+Packages (d) & (e) are required if you want to use GPU.
+Packages (b) to (e) can be installed using:
+```
+luarocks install <package-name>
 ```
 
 ### Options
