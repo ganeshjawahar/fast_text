@@ -48,7 +48,7 @@ for i in {0..7}
 do
   echo "Working on dataset ${DATASET[i]}"
   th train.lua -input "${DATADIR}/${DATASET[i]}.train" \
-    -output "${RESULTDIR}/${DATASET[i]}" -dim 10 -lr "${LR[i]}" -wordNgrams 2 -epoch 5
-  th test.lua -model "${RESULTDIR}/${DATASET[i]}.bin" \
+    -output "${RESULTDIR}/${DATASET[i]}.t7" -dim 10 -lr "${LR[i]}" -wordNgrams 2 -epoch 5
+  th test.lua -model "${RESULTDIR}/${DATASET[i]}.t7" \
     -test "${DATADIR}/${DATASET[i]}.test"
 done
