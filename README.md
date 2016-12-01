@@ -30,7 +30,9 @@ bash runall.sh
 * tds
 * cutorch
 * cunn
+
 Packages (d) & (e) are required if you want to use GPU.
+
 Packages (b) to (e) can be installed using:
 ```
 luarocks install <package-name>
