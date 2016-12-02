@@ -15,9 +15,9 @@ tds = require('tds')
 utils = require('utils')
 
 cmd = torch.CmdLine()
-cmd:option('-model', 'agnews.t7', 'trained model file path')
-cmd:option('-test', 'data/agnews.test', 'testing file path')
-cmd:option('-gpu', 0, 'whether to use gpu (1 = use gpu, 0 = not). use the same option used to train the model.')
+cmd:option('-model', 'ag_news.t7', 'trained model file path')
+cmd:option('-test', 'data/ag_news.test', 'testing file path')
+cmd:option('-gpu', 1, 'whether to use gpu (1 = use gpu, 0 = not). use the same option used to train the model.')
 test_params = cmd:parse(arg)
 
 if test_params.gpu > 0 then
@@ -47,4 +47,4 @@ for line in io.lines(test_params.test) do
   end
   total = total + 1
 end
-print('accuracy on test data = ' .. (acc / total))
+print('accuracy on test data [' .. test_params.test .. '] = ' .. (acc / total))

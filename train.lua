@@ -17,15 +17,15 @@ tds = require('tds')
 utils = require('utils')
 
 cmd = torch.CmdLine()
-cmd:option('-input', 'data/agnews.train', 'training file path')
-cmd:option('-output', 'agnews.t7', 'output file path')
+cmd:option('-input', 'data/ag_news.train', 'training file path')
+cmd:option('-output', 'ag_news.t7', 'output file path')
 cmd:option('-lr', 0.05, 'learning rate')
 cmd:option('-lrUpdateRate', 100, 'change the rate of updates for the learning rate')
 cmd:option('-dim', 10, 'size of word vectors')
 cmd:option('-epoch', 5, 'number of epochs')
 cmd:option('-wordNgrams', 1, 'max length of word ngram')
 cmd:option('-seed', 123, 'seed for the randum number generator')
-cmd:option('-gpu', 0, 'whether to use gpu (1 = use gpu, 0 = not)')
+cmd:option('-gpu', 1, 'whether to use gpu (1 = use gpu, 0 = not)')
 cmd:option('-preTrain', 0, 'initialize word embeddings with pre-trained vectors?')
 cmd:option('-preTrainFile', '../mem_absa/data/glove.6B.300d.txt', 'file containing the pre-trained word embeddings (should be in http://nlp.stanford.edu/projects/glove/ format). this is valid iff preTrain=1.')
 params = cmd:parse(arg)
@@ -86,6 +86,7 @@ for e = 1, params.epoch do
       params.local_token_count = 0
     end
     if i % 15 == 0 then xlua.progress(i, #params.dataset) end
+    if i % 10000 == 0 then collectgarbage() end
   end
   xlua.progress(#params.dataset, #params.dataset)
   print('epoch ' .. e .. ' completed. loss is ' .. (epoch_loss / #params.dataset))

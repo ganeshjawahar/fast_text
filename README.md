@@ -8,18 +8,18 @@ This repository contains the [Torch](http://torch.ch/) implementation of [FastTe
 | Code \ Dataset | AG | Sogou | DBP | Yelp P. | Yelp F. | Yah. A. | Amz. F. | Amz. P. |
 |---|---|---|---|---|---|---|---|---|
 |[Original repo.](https://github.com/facebookresearch/fastText)|92.5|96.8|98.6|95.7|63.9|72.3|60.2|94.6|
-|This repo.|92.5|96.8|98.6|95.7|63.9|72.3|60.2|94.6|
+|This repo.|91.1|96.5|98.5|-|-|-|-|-|
 
 ### Components
 This repository contains the following components:
 * `train.lua` - This is a self-contained code to train the FastText model from scratch. Additionally, it has an option to use pre-trained word embeddings, that are specified in [Glove's pre-trained embeddings](http://nlp.stanford.edu/projects/glove/) format.
 * `test.lua` - This script helps in testing the trained model with a test dataset.
-* `runall.sh` - This script outputs the last column of the Table 1 from the original paper, which is the test accuracy (%) resulting from running FastTex on 8 sentiment datasets.
+* `runall.sh` - This script outputs the last row of the Table 1 from the original paper, which is the test accuracy (%) resulting from running FastText on 8 sentiment datasets.
 
 ### Quick Start
 Download all the 8 datasets from [Drive](http://goo.gl/JyCnZq) and rename the master directory containing all the tars to 'data'.
 
-To get the performance scores reported in the last column of the Table 1 from the original paper, execute:
+To get the performance scores reported in the last row of the Table 1 from the original paper, execute:
 ```
 bash runall.sh
 ```

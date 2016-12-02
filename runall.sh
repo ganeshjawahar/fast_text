@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#This code is partially borrowed from https://github.com/facebookresearch/fastText.
 
 myshuf() {
   perl -MList::Util=shuffle -e 'print shuffle(<>);' "$@";
@@ -42,13 +43,11 @@ do
   fi
 done
 
-make
-
 for i in {0..7}
 do
   echo "Working on dataset ${DATASET[i]}"
   th train.lua -input "${DATADIR}/${DATASET[i]}.train" \
-    -output "${RESULTDIR}/${DATASET[i]}.t7" -dim 10 -lr "${LR[i]}" -wordNgrams 2 -epoch 5
+    -output "${RESULTDIR}/${DATASET[i]}.t7" -dim 10 -lr "${LR[i]}" -wordNgrams 2 -epoch 5 -gpu 1
   th test.lua -model "${RESULTDIR}/${DATASET[i]}.t7" \
-    -test "${DATADIR}/${DATASET[i]}.test"
+    -test "${DATADIR}/${DATASET[i]}.test" -gpu 1
 done

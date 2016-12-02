@@ -62,8 +62,8 @@ end
 function utils.get_tensors(params)
   params.dataset = {}
   for line in io.lines(params.input) do
-    local label, text = _get_tuple(line)
-    local ngrams = _tokenize(text, params.wordNgrams)
+    local label, text = utils.get_tuple(line)
+    local ngrams = utils.tokenize(text, params.wordNgrams)
     local tensor = torch.Tensor(#ngrams)
     for i = 1, #ngrams do
       tensor[i] = params.ngram2index[ngrams[i]]
